@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,13 +24,23 @@ public class MainActivity extends AppCompatActivity {
         //bottoni
         Button loginButton = findViewById(R.id.btnLogin);
         Button registrationButton = findViewById(R.id.btnRegistrati);
+        //visualizzatore errori
+        TextView visualizzatoreErrori = findViewById(R.id.textError);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //if(usernameText)
-                Intent intent = new Intent( MainActivity.this, SecondActivity.class);
-                startActivity(intent);
+                String usernameInserito = usernameText.getText().toString();
+                String passwordInserita = passwordText.getText().toString();
+                if (usernameInserito.equals(username) && passwordInserita.equals(password))
+                {
+                    Intent intent = new Intent( MainActivity.this, SecondActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    visualizzatoreErrori.setText("Credenziali errate");
+                }
             }
         });
     }
