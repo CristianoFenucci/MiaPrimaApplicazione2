@@ -34,13 +34,21 @@ public class MainActivity extends AppCompatActivity {
                 String passwordInserita = passwordText.getText().toString();
                 if (usernameInserito.equals(username) && passwordInserita.equals(password))
                 {
-                    Intent intent = new Intent( MainActivity.this, SecondActivity.class);
+                    Intent intent = new Intent( MainActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }
                 else
                 {
                     visualizzatoreErrori.setText("Credenziali errate");
                 }
+            }
+        });
+
+        registrationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( MainActivity.this, RegistrationActivity.class);
+                startActivity(intent);
             }
         });
     }
